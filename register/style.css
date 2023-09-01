@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 65vh;
+}
+
+.main {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+    padding: 40px;
+}
+
+.form-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.main-width {
+    width: 1400px;
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    top: -10%;
+}
+
+.input-group {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    top: -5px;
+    transition: .5s;
+}
+
+.input-group input {
+    width: 320px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.remember {
+    margin: -5px 0 15px 5px;
+}
+
+.remember label {
+    color: #fff;
+    font-size: 14px;
+}
+
+button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color:#0E86D4;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.wrapper .form-wrapper.sign-up {
+    position: absolute;
+    top: 0;
+    transform: scale(1);
+}
+
+.signUp-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.signUp-link p {
+    color: #fff;
+}
+
+.signUp-link p a {
+    text-decoration: none;
+    color: #0E86D4;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: .4s;
+}
+
+.signUp-link p a:hover {
+    border-bottom: 2px solid #0E86D4;
+    transition: .4s;
+}
+
+.social-platform {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    margin: 15px 6px 0;
+    transition: .3s;
+}
+
+.social-icons a:hover {
+    background: #fff;
+}
+
+
+.social-icons a i {
+    color: #fff;
+    font-size: 14px;
+}
+
+.social-icons a:hover i {
+    color: rgb(0, 0, 0);
+}
+
+
+.duck {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(-180deg, rgba(116, 199, 205, 0.50) 0%, rgba(85, 127, 161, 0.87) 100%), url("bg.png") !important;
+    position: relative;
+}
+
+.duck header .logo h2 a {
+    display: block;
+    font-size: 32px;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+}
+
+.duck header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0 30px;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: .4s;
+}
+
+nav ul li:not(:last-child) a:hover {
+    border-bottom: 2px solid white;
+}
+
+nav ul li.btn a {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 9px 20px;
+    border-radius: 30px;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+nav ul li.btn:hover a {
+    border: 1px solid white;
+    color: black;
+    background: white;
+    transition: .4s;
+}
+
+.content {
+    padding-top: 140px;
+}
+
+.content .main-text {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
+}
+
+.content .main-text h1 {
+    font-size: 100px;
+    line-height: 1;
+    color: white;
+    margin: 0px 0px 45px;
+}
+
+.content .main-text a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background: white;
+    border: 1px solid white;
+    padding: 9px 25px;
+    line-height: 1.4;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: .4s;
+}
+
+.content .main-text a:hover {
+    transform: scale(1.2);
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    transition: .4s;
+}

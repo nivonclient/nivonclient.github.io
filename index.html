@@ -1,41 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-
     <title>Nivon Client</title>
     <link rel="icon" href="assets/icon.png">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script>
-        function redirectToDownload() {
-            var fileUrl = "https://nivonclient.github.io/assets/client/launcher.jar";
-
-            var xhr = new XMLHttpRequest();
-
-            xhr.open("GET", fileUrl, true);
-
-            xhr.responseType = "blob";
-
-            xhr.onload = function () {
-                var blob = new Blob([xhr.response], { type: "application/octet-stream" });
-
-                var link = document.createElement("a");
-                link.href = window.URL.createObjectURL(blob);
-                link.download = "launcher.jar";
-                document.body.appendChild(link);
-                
-                link.click();
-            };
-
-            xhr.send();
-        }
-
-    </script>
+    <script src="assets/javascript/script.js"></script>
 </head>
 <body>
-    <section class="nivon">
-        
+    <div class="nivon">
         <div class="main-width">
             <header>
                 <div class="logo">
@@ -43,31 +16,25 @@
                 </div>
 
                 <nav>
-                    <ul>
-                        <li><a href="https://www.youtube.com/@kingduckteam">Youtube</a></li>
-                        <li><a href="https://discord.gg/xm2tpYfeV5">Discord</a></li>
-                        <li class="btn"><a onclick="redirectToDownload()">Download</a></li>
-                    </ul>
+                    <a href="https://www.youtube.com/@kingduckteam">Youtube</a>
+                    <a href="https://discord.gg/xm2tpYfeV5">Discord</a>
+                    <a onclick="redirectToDownload()" class="btn">Download</a>
                 </nav>
             </header>
 
             <div class="content">
                 <div class="main-text">
                     <div class="wrapper">
-                        <div class="videos">
-                            <vidh2>Video: </vidh2>
-                            <p>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/oCWKTwXi_Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </p>
+                        <div class="img-container">
+                            <img id="rotatingImage" src="assets/minecraft.png">
                         </div>
                     </div>
 
                     <h1>Nivon Client</h1>
-                    <!-- <a href="https://nivonclient.github.io/assets/javascript/client.html">Download</a> -->
+                    <h2>A PVP Minecraft Client</h2>
+                    <a class="btn btn-download" onclick="redirectToDownload()">Download</a>
 
-                    <a onclick="redirectToDownload()">Download</a>
-
-                    <a href="https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248774_8c876547113c4e4aab3c868e9e0ec572">Java</a>
+                    <a id="java" class="btn btn-java" href="https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248774_8c876547113c4e4aab3c868e9e0ec572">Java</a> <br>
                 </div>
             </div>
         </div>
@@ -75,9 +42,102 @@
         <footer>
             <div class="footer-content">
                 <p>Release 2</p>
+                <a>Requires Java Version 8 Update 361 Or Higher!</a>
             </div>
         </footer>
 
-    </section>
+
+    </div>
+    <div class="showcase">
+        <div class="available_mod">
+            <a style="color: white; font-weight: 500;">Nivon Mod Support</a>
+            <div class="scrollable-div">
+                <button class="draggable">
+                    <a>Keystrokes</a>
+                    <a class="on_off active">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Memory Usage Display</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Scoreboard</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Bossbar</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Compact Chat</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Potion Status</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>1.7 Animation</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Sprint/Sneak Toggle</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Better Zoom</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Free Look</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Anchor Camera</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Better Tooltip</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Item Physic</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>TNT Countdown</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>FPS Display</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Armor Status</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Hotbar</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Coordinates</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Direction</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+                <button class="draggable">
+                    <a>Pack Display</a>
+                    <a class="on_off">OnOff</a>
+                </button>
+            </div>
+        </div>
+        <div class="videos">
+            <vidh2>Video: </vidh2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oCWKTwXi_Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
 </body>
 </html>

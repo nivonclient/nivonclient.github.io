@@ -13,7 +13,7 @@ body {
 
 .main-width {
     width: 1400px;
-    max-width: 95%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -41,15 +41,51 @@ footer {
     text-transform: capitalize;
 }
 
+.img-container {
+    position: relative;
+    width: 645px;
+    height: 450px;
+    border-radius: 20px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.img-container img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transform: perspective(1000px) rotateY(10deg) rotateX(10deg);
+    box-shadow: 0 0 50px rgba(0, 0, 0, .6);
+    transition: .3s;
+}
+
 .nivon {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(-180deg, rgba(116, 199, 205, 0.50) 0%, rgba(85, 127, 161, 0.87) 100%), url("bg.png") center/cover no-repeat;
-    min-height: 100vh;
     position: relative;
 }
+
+.nivon::before {
+    content: '';
+    background: url("bg.png") center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    filter: blur(7px);
+}
+
+.nivon {
+    min-height: 100vh;
+}
+
 
 .nivon header .logo h2 a {
     display: block;
@@ -57,17 +93,24 @@ footer {
     font-weight: 600;
     text-decoration: none;
     color: white;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .videos {
-    position: relative;
+    position: absolute;
+    top: 125%;
+    left: 50%;
     width: 645px;
     height: 450px;
     background: rgba(255, 255, 255, .2);
     border-radius: 20px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 50px rgba(0, 0, 0, .3);
     padding: 40px;
 }
+
 
 .wrapper {
     display: flex;
@@ -91,12 +134,7 @@ vidh2 {
     padding: 40px 0 30px;
 }
 
-nav ul li {
-    list-style: none;
-    display: inline-block;
-}
-
-nav ul li a {
+nav a {
     text-decoration: none;
     color: white;
     margin-left: 60px;
@@ -117,16 +155,16 @@ p {
     -ms-user-select: none;
 }
 
-nav ul li:not(:last-child) a:hover {
+nav a:not(:last-child):hover {
     border-bottom: 2px solid white;
 }
 
-nav ul li.btn a {
+nav .btn {
     background: transparent;
     color: white;
     border: 1px solid white;
     padding: 9px 20px;
-    border-radius: 30px;
+    border-radius: 20px;
     line-height: 1.4;
     font-size: 14px;
     font-weight: 500;
@@ -136,7 +174,7 @@ nav ul li.btn a {
     -ms-user-select: none;
 }
 
-nav ul li.btn:hover a {
+nav .btn:hover {
     border: 1px solid white;
     color: black;
     background: white;
@@ -161,44 +199,151 @@ nav ul li.btn:hover a {
     margin: 0px 0px 45px;
 }
 
-.content .main-text a {
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    background: white;
-    border: 1px solid white;
-    padding: 9px 25px;
-    line-height: 1.4;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: .4s;
+.content .main-text h2 {
+    position: relative;
+    color: white;
+    line-height: 1;
+    top: -50px;
 }
 
-.content .main-text a:not(:first-child) {
+.content .main-text .btn {
     display: inline-block;
     text-decoration: none;
     color: black;
     background: white;
     border: 1px solid white;
-    margin-left: 10px;
-    padding: 9px 25px;
+    padding: 12px 45px;
     line-height: 1.4;
-    border-radius: 30px;
+    border-radius: 7px;
     font-size: 14px;
     font-weight: 500;
     transition: .4s;
     user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Added box-shadow for a subtle shadow effect */
 }
 
-.content .main-text a:hover {
-    transform: scale(1.2);
-    border: 1px solid white;
-    background: transparent;
-    cursor: pointer;
+.content .main-text .btn.btn-java {
+    border: 1px solid rgba(255, 255, 255);
     color: white;
+    background: transparent;
+    margin-left: 15px;
+}
+
+@media(prefers-color-scheme: dark) {
+    * {
+        scrollbar-color:#585a5f #191c1e;
+        scrollbar-width: thin
+    }
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #a0a0a0;
+        border: 3px solid #ffffff;
+        border-radius: 6px;
+    }
+}
+
+.showcase {
+    height: 100%;
+    background: linear-gradient(90deg, #7debf2, #60a4ff);
+}
+
+.content .main-text a.btn:hover {
+    cursor: pointer;
     transition: .4s;
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.tooltip-btn {
+    position: relative;
+}
+
+#tooltip {
+    position: absolute;
+    background-color: #8383838e;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#tooltip.active {
+    opacity: 1;
+}
+
+.available_mod {
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 125%;
+    left: 16%;
+    width: 362px;
+    border-radius: 10px;
+    height: 450px;
+    background: rgba(255, 255, 255, .2);
+    padding: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .6);
+}
+
+.available_mod::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border: 3px solid #8FDBF9;
+    border-radius: 20px;
+}
+
+.available_mod::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.available_mod .draggable {
+    font-weight: 600;
+    border: 0px;
+    margin: 5px 0px;
+    width: 330px;
+    font-size: 15px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    transition: .2s;
+}
+
+.available_mod .draggable a {
+    float: left;
+    margin: 3px 10px;
+}
+
+.available_mod .draggable .on_off {
+    background-color: rgb(255, 101, 96);
+    margin: -29px 265px;
+    border-radius: 6px;
+    font-size: 0;
+    margin-right: 19px;
+    height: 30px;
+    width: 60px;
+    transition: .3s;
+}
+
+
+.available_mod .draggable .on_off:hover {
+    background-color: rgb(204, 46, 40);
+    transition: .3s;
+}
+
+.available_mod .draggable .on_off.active {
+    background-color: rgb(83, 248, 158);
+    transition: .3s;
+}
+
+.available_mod .draggable .on_off.active:hover {
+    background-color: rgb(0, 204, 92);
+    transition: .3s;
 }

@@ -4,7 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBWjIVPTbD484mT1O8Ylfv1PKVLb-shMIE",
+        authDomain: "nivonserver.firebaseapp.com",
+        databaseURL: "https://nivonserver-default-rtdb.firebaseio.com",
+        projectId: "nivonserver",
+        storageBucket: "nivonserver.appspot.com",
+        messagingSenderId: "734925334278",
+        appId: "1:734925334278:web:cecde9b7c2d469fe43e087",
+        measurementId: "G-ZK0M67YFGS"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        function check() {
+            if (window.location.href.indexOf('?addplayer=') > -1) {
+                var player = window.location.href.split('?addplayer=')[1].split('%3Cbr%3E');
+                
+                addPlayerToDatabase(player);
+
+                var cleanURL = window.location.href.split('?')[0];
+                window.location.href = cleanURL;
+            }
+
+            if (window.location.href.indexOf('?removeplayer=') > -1) {
+                var playerToRemove = window.location.href.split('?removeplayer=')[1];
+
+                removePlayerFromDatabase(playerToRemove);
+
+                var cleanURL = window.location.href.split('?')[0];
+                window.location.href = cleanURL;
+            }
+
+            getPlayersFromDatabase();
+        }
+
+        async function addPlayerToDatabase(player) {
+            try {
+                await addDoc(collection(db, 'players'), {
+                    player: player
+                });
+            } catch (error) {
+                console.error("Error adding player to Firestore: ", error);
+            }
+        }
+
+        async function removePlayerFromDatabase(playerToRemove) {
+            try {
+                const playersQuery = query(collection(db, 'players'), where('player', '==', playerToRemove));
+                const playersSnapshot = await getDocs(playersQuery);
+
+                playersSnapshot.forEach(async (doc) => {
+                    await deleteDoc(doc.ref);
+                });
+            } catch (error) {
+                console.error("Error removing player from Firestore: ", error);
+            }
+        }
+
+        async function getPlayersFromDatabase() {
+            try {
+                const playersQuery = query(collection(db, 'players'));
+                const playersSnapshot = await getDocs(playersQuery);
+
+                var players = [];
+                playersSnapshot.forEach((doc) => {
+                    players.push(...doc.data().player);
+                });
+
+                document.body.innerHTML = '<p>' + players.join('<br>') + '</p>';
+            } catch (error) {
+                console.error("Error retrieving players from Firestore: ", error);
+            }
+        }
+
+        function isPlayerInArray(player, array) {
+            var playerString = player.join('<br>');
+            return array.includes(playerString);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            check();
+        });
+    </script>
 </head>
 <body onload="check()"></body>
 </html>
